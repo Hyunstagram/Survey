@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">choice</string>
+    <string name="user">USER</string>
+    <string name="id">ID</string>
+    <string name="hint">Enter your ID</string>
+    <string name="modify">MODIFY</string>
+    <string name="thema">THEMA</string>
+    <string name="white">WHITE</string>
+    <string name="dark">DARK</string>
+    <string name="blue">BLUE</string>
+    <string name="select">SELECT</string>
+    <string name="autosave">Auto save</string>
+    <string name="autowifi">Auto connect wifi</string>
+    <string name="save">SAVE</string>
+</resources>
