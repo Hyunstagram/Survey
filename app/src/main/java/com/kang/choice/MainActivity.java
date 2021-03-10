@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView  title_select;
 
     private EditText edit_id;
-    private Button button_id;
+    private Button button_modify;
 
     private RadioGroup group_thema;
     private RadioButton radio_white;
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
     // data
     String id = "";
-    String thema = "";
+    String select_thema = "";
     String select_save = "";
     String select_wifi = "";
 
@@ -67,9 +67,7 @@ public class MainActivity extends AppCompatActivity {
         title_select = findViewById(R.id.title_select);
 
         edit_id = findViewById(R.id.edit_id);
-        button_id = findViewById(R.id.button_id);
-        edit_id.setTag(edit_id.getKeyListener());
-        edit_id.setKeyListener(null);
+        button_modify = findViewById(R.id.button__modify);
 
         group_thema = findViewById(R.id.group_thema);
         radio_white = findViewById(R.id.radio_white);
@@ -84,11 +82,15 @@ public class MainActivity extends AppCompatActivity {
 
         imm = (InputMethodManager)this.getSystemService(INPUT_METHOD_SERVICE);
 
-        button_id.setOnClickListener(new View.OnClickListener() {
+        button_modify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                imm.hideSoftInputFromWindow(edit_id.getWindowToken(), 0);
                 edit_id.setKeyListener((KeyListener)edit_id.getTag());
+                radio_white.setKeyListener((KeyListener)edit_id.getTag());
+                radio_dark.setKeyListener((KeyListener)edit_id.getTag());
+                radio_blue.setKeyListener((KeyListener)edit_id.getTag());
+                check_save.setKeyListener((KeyListener)edit_id.getTag());
+                check_wifi.setKeyListener((KeyListener)edit_id.getTag());
             }
         });
 
@@ -97,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == -1)
                     return;
-                thema = "Thema : " + String.valueOf(((RadioButton)findViewById(checkedId)).getText()) + "\n";
+                select_thema = "Thema : " + String.valueOf(((RadioButton)findViewById(checkedId)).getText()) + "\n";
                 title_thema.setTextColor(Color.BLACK);
             }
         });
@@ -132,11 +134,11 @@ public class MainActivity extends AppCompatActivity {
         button_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (String.valueOf(edit_id.getText()).equals("") || thema == "" || (check_save.isChecked() == false && check_wifi.isChecked() == false)) {
+                if (String.valueOf(edit_id.getText()).equals("") || select_thema == "" || (check_save.isChecked() == false && check_wifi.isChecked() == false)) {
                     if (String.valueOf(edit_id.getText()).equals("")) {
                         title_user.setTextColor(Color.RED);
                     }
-                    if (thema == "") {
+                    if (select_thema == "") {
                         title_thema.setTextColor(Color.RED);
                     }
                     if (check_save.isChecked() == false && check_wifi.isChecked() == false) {
@@ -149,7 +151,22 @@ public class MainActivity extends AppCompatActivity {
                 select_save = "Auto save : " + check_save.isChecked() + "\n";
                 select_wifi = "Auto connect wifi : " + check_wifi.isChecked() + "\n";
 
-                Log.i(TAG, id + thema + select_save + select_wifi);
+                Log.i(TAG, id + select_thema + select_save + select_wifi);
+
+                edit_id.setTag(edit_id.getKeyListener());
+                edit_id.setKeyListener(null);
+
+                radio_white.setTag(radio_white.getKeyListener());
+                radio_white.setKeyListener(null);
+                radio_dark.setTag(radio_dark.getKeyListener());
+                radio_dark.setKeyListener(null);
+                radio_blue.setTag(radio_blue.getKeyListener());
+                radio_blue.setKeyListener(null);
+
+                check_save.setTag(check_save.getKeyListener());
+                check_save.setKeyListener(null);
+                check_wifi.setTag(check_wifi.getKeyListener());
+                check_wifi.setKeyListener(null);
             }
         });
 
@@ -162,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
                 check_wifi.setChecked(false);
 
                 id = "";
-                thema = "";
+                select_thema = "";
                 select_save = "";
                 select_wifi = "";
 

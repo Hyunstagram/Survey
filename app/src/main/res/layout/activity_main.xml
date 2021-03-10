@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:paddingLeft="10dp"
     android:paddingTop="20dp"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:paddingStart="10dp">
 
     <TextView
         android:id="@+id/title_user"
@@ -44,10 +45,11 @@
         android:inputType="textPersonName"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/label_id"
-        app:layout_constraintTop_toTopOf="@+id/label_id" />
+        app:layout_constraintTop_toTopOf="@+id/label_id"
+        android:importantForAutofill="no" />
 
     <Button
-        android:id="@+id/button_id"
+        android:id="@+id/button__modify"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -70,7 +72,7 @@
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_id" />
+        app:layout_constraintTop_toBottomOf="@+id/button__modify" />
 
     <RadioGroup
         android:id="@+id/group_thema"
@@ -124,7 +126,8 @@
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/group_thema" />
+        app:layout_constraintTop_toBottomOf="@+id/group_thema"
+        android:layout_marginStart="10dp" />
 
     <CheckBox
         android:id="@+id/check_save"
